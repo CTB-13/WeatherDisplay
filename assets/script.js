@@ -19,14 +19,14 @@ function weatherForecast() {
 
     function storeInLocalStorage(userCity) {
         const cityToStore = userCity;
-        let strCities = window.localStorage.getItem("history");
+        let strCities = window.localStorage.getItem("previous");
         console.log(strCities);
         var cities = JSON.parse(strCities);
         if(cities==null)cities=[];
         cities.unshift(cityToStore);
         if(cities.length>8)cities.splice(8,(cities.length-8));
         strCities = JSON.stringify(cities);
-        localStorage.setItem('history', strCities);
+        localStorage.setItem('previous', strCities);
         console.log("Local Storage: ", strCities)
     }
 
@@ -34,7 +34,7 @@ function weatherForecast() {
 
     function displayLocalStorage() {
 
-        var history = localStorage.getItem("history");
+        var history = localStorage.getItem("previous");
         if (!history) {
             return
         }
